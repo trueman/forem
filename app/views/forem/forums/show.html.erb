@@ -2,16 +2,7 @@
 
 <%= forem_pages_widget(@topics) %>
 
-<table class='topics subdued' cellspacing='0'>
-  <thead>
-    <tr>
-      <th class="icon"></th>
-      <th class="byline"><%= t('forem.topic.headings.topic') -%></th>
-      <th class="latest-post"><%= t('forem.topic.headings.latest') -%></th>
-      <th class="posts-count"><%= t('forem.topic.headings.posts') -%></th>
-      <th class="views-count"><%= t('forem.topic.headings.views') -%></th>
-    </tr>
-  </thead>
+<table class='topics subdued' cellspacing='0' width="100%>
   <tbody>
     <% if @topics.empty? %>
       <tr><td colspan='5' align='center'><%= t('forem.topic.none') %></td></tr>
