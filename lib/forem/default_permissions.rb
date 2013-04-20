@@ -31,7 +31,7 @@ module Forem
 
       unless method_defined?(:can_reply_to_forem_topic?)
         def can_reply_to_forem_topic?(topic)
-          topic.forum.moderator?(self)
+          topic.forum.member?(self)
         end
       end
 
