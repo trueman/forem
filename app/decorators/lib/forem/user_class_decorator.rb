@@ -12,5 +12,13 @@ if Forem.user_class
     def forem_needs_moderation?
       !Forem.moderate_first_post || forem_state == 'approved'
     end
+
+    def moderator_of? forum
+      forem_memberships.where(group_id: forum.moderators.collect(&:id)).where(is_moderator: true).any?
+    end
+
+    def member_of? forum
+      forem_memberships.where(group_id: forum.moderators.collect(&:id)).where(status: "approved").any?
+    end
   end
 end

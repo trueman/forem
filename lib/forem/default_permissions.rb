@@ -25,7 +25,7 @@ module Forem
 
       unless method_defined?(:can_create_forem_topics?)
         def can_create_forem_topics?(forum)
-          forum.moderator?(self)
+          forum.member?(self)
         end
       end
 
