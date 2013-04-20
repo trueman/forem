@@ -49,5 +49,19 @@ module Forem
         end
       end.html_safe if content.present?
     end
+
+
+    # def page_header
+    #   content_tag(:div, class: "row") do
+    #     content_tag(:div, class: "span12") do
+    #       content_tag(:div, class: "page-header") do
+    #         content_tag(:h3) do
+    #           yield
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
+
   end
 end

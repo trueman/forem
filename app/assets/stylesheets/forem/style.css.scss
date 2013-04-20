@@ -1,14 +1,18 @@
 .forum{
-  background: #eee;
-  width: 300px;
-  float: left;
-  margin-right: 20px;
   .info{
     .title{
       font-size: 16px;
     }
     .description{
 
+    }
+  }
+}
+
+#forum{
+  table.topics{
+    th.icon, td.icon{
+      text-align: center;
     }
   }
 }

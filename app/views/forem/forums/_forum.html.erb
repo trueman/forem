@@ -1,13 +1,17 @@
 <% if can?(:read, forum) %>
-  <div class="forum">
-    <p>
-      <h4><%= link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "title" %></h4>
-      <span class='description'><%= forem_format(forum.description) %></span>
-    </p>
-    <p>
-      <span class="topics-count">topics: <%= topics_count(forum) %></span>
-      <span class="posts-count">posts: <%= posts_count(forum) %></span>
-      <span class="views-count">views: <%= forum.views_count %></span>
-    </p>
-  </div>
+  <li class="forum span4">
+    <div class="thumbnail">
+      <div class="caption">
+        <p>
+          <h4><%= link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "title" %></h4>
+          <span class='description'><%= forem_format(forum.description) %></span>
+        </p>
+        <p>
+          <span class="label label-info topics-count">topics: <%= topics_count(forum) %></span>
+          <span class="label label-info posts-count">posts: <%= posts_count(forum) %></span>
+          <span class="label label-info views-count">views: <%= forum.views_count %></span>
+        </p>
+      </div>
+    </div>
+  </li>
 <% end %>

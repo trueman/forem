@@ -1,27 +1,28 @@
 <tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">
   <td class='icon'>
     <% if topic.locked? %>
-      <span class='lock icon'></span>
+      <i class='icon-lock'></i>
     <% end %>
     <% if topic.pinned? %>
-      <span class='pin icon'></span>
+      <i class='icon-certificate'></i>
     <% end %>
+  </td>
+
+  <td class='byline'>
     <% if forem_user && view = topic.view_for(forem_user) %>
       <% if topic.posts.exists?(["created_at > ?", view.updated_at]) %>
-        <span class='new_posts icon'>new</span>
+        <i class='icon-volume-up'></i> 
       <% end %>
     <% end %>
-  </td>
-  <td class='byline'>
     <%= new_since_last_view_text(topic) %>
-    <div class='subject'><%= link_to forem_emojify(topic.subject), forem.forum_topic_path(@forum, topic) %></div>
+    <span class='subject'><%= link_to forem_emojify(topic.subject), forem.forum_topic_path(@forum, topic) %></span>
   </td>
   <td>
-    <div class='started-by'><%= t "started_by" %><%= relevant_posts(topic).first.user %></div>
+    <div class='started-by'><%= relevant_posts(topic).first.user %></div>
   </td>
   <td class='latest-post'>
     <%= link_to_latest_post(topic) -%>
   </td>
-  <td class='posts-count'>count: <%= relevant_posts(topic).count %></td>
-  <td class='views-count'>views: <%= topic.views_count %></td>
+  <td class='posts-count'><%= relevant_posts(topic).count %></td>
+  <td class='views-count'><%= topic.views_count %></td>
 </tr>
