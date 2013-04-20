@@ -1,6 +1,7 @@
 <%= content_for :page_header do %>
   <%= link_to forem_emojify(@forum.title), [forem, @forum] %>
 <% end %>
+
 <div id='forum'>
   <div class="row">
      <div class="span8">
@@ -29,6 +30,9 @@
         </table>
 
         <%= forem_pages_widget(@topics) %>
+     </div>
+     <div class="span4">
+       <%= link_to "I want to be a member", new_forum_member_path(@forum)  %>
      </div>
   </div>
 </div>

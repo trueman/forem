@@ -8,6 +8,7 @@ Forem::Engine.routes.draw do
         get :unsubscribe
       end
     end
+    resources :members, :only => [:new, :create]
   end
 
   resources :topics, :only => [:new, :create, :index, :show, :destroy] do

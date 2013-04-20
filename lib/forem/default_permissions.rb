@@ -25,13 +25,13 @@ module Forem
 
       unless method_defined?(:can_create_forem_topics?)
         def can_create_forem_topics?(forum)
-          true
+          forum.moderator?(self)
         end
       end
 
       unless method_defined?(:can_reply_to_forem_topic?)
         def can_reply_to_forem_topic?(topic)
-          true
+          topic.forum.moderator?(self)
         end
       end
 
