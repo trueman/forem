@@ -3,7 +3,27 @@
 <% end %>
 
 <div class="row">
-  <div class="span8">
+  <div class="span12">
+    <p>
+      <%= link_to forem.forum_path(@topic.forum), class: "btn" do %>
+        <i class="icon-chevron-left"></i>&nbsp;&nbsp;&nbsp;<%= @topic.forum.title %>
+      <% end %>
+      <span class="btn-group">
+        <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
+          <%= link_to t(".reply"), forem.new_topic_post_path(@topic), class: "btn" %>
+        <% end %>
+        <% if @topic.user == forem_user || forem_admin? %>
+          <%= link_to t(".delete"), forem.forum_topic_path(@forum, @topic), class: "btn", :method => :delete, :confirm => t("are_you_sure") %>
+        <% end %>
+        <% if forem_user %>
+          <% if !@topic.subscriber?(forem_user.id) %>
+            <%= link_to t(".subscribe"), forem.subscribe_forum_topic_path(@forum, @topic), class: "btn" %>
+          <% else %>
+            <%= link_to t(".unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic), class: "btn" %>
+          <% end %>
+        <% end %>
+      </span>
+    </p>
     <div id='topic' class='<%= 'un' unless @topic.locked? %>locked'>
       <p class="btn-group pull-right">
         <% if forem_admin? %>
@@ -37,27 +57,5 @@
 
       <%= forem_pages_widget(@posts) %>
     </div>
-  </div>
-  <div class="span4">
-    <p>
-      <%= link_to forem.forum_path(@topic.forum), class: "btn" do %>
-        <i class="icon-chevron-left"></i>&nbsp;&nbsp;&nbsp;<%= @topic.forum.title %>
-      <% end %>
-    </p>
-    <p class="btn-group">
-      <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
-        <%= link_to t(".reply"), forem.new_topic_post_path(@topic), class: "btn" %>
-      <% end %>
-      <% if @topic.user == forem_user || forem_admin? %>
-        <%= link_to t(".delete"), forem.forum_topic_path(@forum, @topic), class: "btn", :method => :delete, :confirm => t("are_you_sure") %>
-      <% end %>
-      <% if forem_user %>
-        <% if !@topic.subscriber?(forem_user.id) %>
-          <%= link_to t(".subscribe"), forem.subscribe_forum_topic_path(@forum, @topic), class: "btn" %>
-        <% else %>
-          <%= link_to t(".unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic), class: "btn" %>
-        <% end %>
-      <% end %>
-    </p>
   </div>
 </div>

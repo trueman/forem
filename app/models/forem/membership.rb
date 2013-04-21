@@ -3,6 +3,8 @@ module Forem
     belongs_to :group
     belongs_to :member, :class_name => Forem.user_class.to_s
 
+    validates :member_id, uniqueness: { scope: :group_id }
+
     attr_accessible :member_id, :group_id, :is_moderator, :status
 
     def is_moderator?
@@ -13,7 +15,7 @@ module Forem
       status == "approved"
     end
 
-    def is_peding?
+    def is_pending?
       status == "pending"
     end
 

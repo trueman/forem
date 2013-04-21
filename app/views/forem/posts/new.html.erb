@@ -1,6 +1,9 @@
-<%= render :partial => 'forem/forums/head', :locals => { :forum => @topic.forum } %>
-
-<h2><%= t("forem.post.new") %></h2>
+<%= content_for :page_header do %>
+  <%= t("forem.post.new") %>
+<% end %>
+<p id='forum_topic_links'>
+  <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(@topic.forum), class: "btn" %>
+</p>
 
 <% if @reply_to_post %>
   <div id='posts'>
@@ -14,5 +17,5 @@
 
 <%= simple_form_for [forem, @topic, @post] do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <%= f.submit t("forem.post.buttons.reply") %>
+  <%= f.submit t("forem.post.buttons.reply"), class: "btn" %>
 <% end %>

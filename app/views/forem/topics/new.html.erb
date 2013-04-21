@@ -1,5 +1,9 @@
-<%= render :partial => 'forem/forums/head', :locals => { :forum => @topic.forum } %>
+<%= content_for :page_header do %>
+  <%= t("forem.topic.new") %>
+<% end %>
 
-<h2><%= t("forem.topic.new") %></h2>
+<p id='forum_topic_links'>
+  <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(@topic.forum), class: "btn" %>
+</p>
 
 <%= render "form" %>

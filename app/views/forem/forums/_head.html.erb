@@ -1,14 +1,22 @@
-<div id='description' class="well"><%= forem_format(forum.description) %></div>
-<p id='forum_topic_links'>
-  <% unless @topic.try(:new_record?) %>
-    <% if can? :create_topic, @forum %>
-      <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), class: "btn" %>
-    <% end %>
-  <% end %>
-  <% if @topic %>
-    <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), class: "btn" %>
-  <% end %>
-  <% if can? :moderate, @forum %>
-    <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), class: "btn" %>
-  <% end %>
-</p>
+<div class="row">
+  <div class="span8">
+    <div id='description' class="well"><%= forem_format(forum.description) %></div>
+  </div>
+  <div class="span4">
+    <p id='forum_topic_links' class="well">
+      <% unless @topic.try(:new_record?) %>
+        <% if can? :create_topic, @forum %>
+          <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), class: "btn" %>
+        <% else %>
+         <%= link_to "加入小组", new_forum_member_path(forum), class: "btn" %>
+        <% end %>
+      <% end %>
+      <% if @topic %>
+        <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), class: "btn" %>
+      <% end %>
+      <% if can? :moderate, @forum %>
+        <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), class: "btn" %>
+      <% end %>
+    </p>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<%= f.input :text %>
+<%= f.input :text, input_html:{rows: 10, cols: 80, class: "span8"} %>
 
 <% if params[:reply_to_id] %>
   <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
