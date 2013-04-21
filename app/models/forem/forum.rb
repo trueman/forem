@@ -7,6 +7,8 @@ module Forem
     extend FriendlyId
     friendly_id :name, :use => :slugged
 
+    mount_uploader :icon, Forem::ForumIconUploader
+
     belongs_to :category
 
     has_many :topics,     :dependent => :destroy

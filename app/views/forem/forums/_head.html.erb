@@ -1,6 +1,9 @@
 <div class="row">
   <div class="span8">
-    <div id='description' class="well"><%= forem_format(forum.description) %></div>
+    <div id='description' class="well">
+      <%= image_tag forum.icon.url %>
+      <%= forem_format(forum.description) %>
+    </div>
   </div>
   <div class="span4">
     <p id='forum_topic_links' class="well">

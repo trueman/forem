@@ -2,14 +2,16 @@
   <li class="forum span4">
     <div class="thumbnail">
       <div class="caption">
+        <%= image_tag forum.icon.url, style: "float:left; margin: 0px 8px 8px 0px;" %>
         <p>
           <h4><%= link_to forem_emojify(forum.title), forem.forum_path(forum), :class => "title" %></h4>
-          <span class='description'><%= forem_format(forum.description) %></span>
-        </p>
-        <p>
           <span class="label label-info topics-count">topics: <%= topics_count(forum) %></span>
           <span class="label label-info posts-count">posts: <%= posts_count(forum) %></span>
           <span class="label label-info views-count">views: <%= forum.views_count %></span>
+        </p>
+        <hr />
+        <p class='description'>
+          <%= forem_format(forum.description) %>
         </p>
       </div>
     </div>
